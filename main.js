@@ -1,12 +1,11 @@
-const date = new Date();
-console.log(date.getDay());
-document.getElementById('put-text-here').innerHTML = NumToDay(date.getDay()) +' '+ numToMonth(date.getMonth()) + ' ' + getCurrentTime();
 
-console.log(date.getHours());
+let timerThing = setInterval(setCurrentTime, 1000);
 
-function getCurrentTime(){
+function setCurrentTime(){
+    let date = new Date();
     let currentTime = date.getHours()+' '+date.getMinutes() +' '+date.getSeconds();
-    return currentTime;
+    document.getElementById('put-text-here').innerHTML = NumToDay(date.getDay()) +' '+ numToMonth(date.getMonth()) + ' ' + currentTime;
+    //return currentTime;
 }
 
 function NumToDay(dayNumber){
@@ -80,5 +79,3 @@ function numToMonth(monthNumber){
             break;
     }
 }
-
-console.log(date.getMonth());
