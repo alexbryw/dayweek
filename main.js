@@ -1,6 +1,13 @@
 const date = new Date();
 console.log(date.getDay());
-document.getElementById('put-text-here').innerHTML = NumToDay(date.getDay()) +' '+ numToMonth(date.getMonth());
+document.getElementById('put-text-here').innerHTML = NumToDay(date.getDay()) +' '+ numToMonth(date.getMonth()) + ' ' + getCurrentTime();
+
+console.log(date.getHours());
+
+function getCurrentTime(){
+    let currentTime = date.getHours()+' '+date.getMinutes() +' '+date.getSeconds();
+    return currentTime;
+}
 
 function NumToDay(dayNumber){
     switch(dayNumber){
@@ -32,40 +39,40 @@ function NumToDay(dayNumber){
 
 function numToMonth(monthNumber){
     switch(monthNumber){
-        case 1:
+        case 0:
             return 'Januari';
             break;
-        case 2:
+        case 1:
             return 'Februari';
             break;
-        case 3:
+        case 2:
             return 'Mars';
             break;
-        case 4:
+        case 3:
             return 'April';
             break;
-        case 5:
+        case 4:
             return 'Maj';
             break;
-        case 6:
+        case 5:
             return 'Juni'
             break;
-        case 7:
+        case 6:
             return 'Juli';
             break;
-        case 8:
+        case 7:
             return 'Augusti';
             break;
-        case 9:
+        case 8:
             return 'September';
             break;
-        case 10:
+        case 9:
             return 'Oktober';
             break;
-        case 11:
+        case 10:
             return 'November';
             break;
-        case 12:
+        case 11:
             return 'December';
             break;
         default:
