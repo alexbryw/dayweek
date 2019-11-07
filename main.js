@@ -1,13 +1,58 @@
 
+//run setCurrent time every second.
 let timerThing = setInterval(setCurrentTime, 1000);
 
+/**
+ * Gets date and time and turns the numbers to text in html.
+ */
 function setCurrentTime(){
     let date = new Date();
-    let currentTime = date.getHours()+' '+date.getMinutes() +' '+date.getSeconds();
-    document.getElementById('put-text-here').innerHTML = NumToDay(date.getDay()) +' '+ numToMonth(date.getMonth()) + ' ' + currentTime;
-    //return currentTime;
+    document.querySelector('.day-holder').innerHTML = NumToDay(date.getDay());
+    document.querySelector('.month-holder').innerHTML = numToMonth(date.getMonth());
+    document.querySelector('.time-holder').innerHTML = NumToTime(date.getHours(), date.getMinutes(), date.getSeconds())
 }
 
+/**
+ * Adds a zero to time if digits are 9 or smaller.
+ * @param {Number} hourNum 
+ * @param {Number} minuteNum 
+ * @param {Number} secondNum 
+ * @returns {String} String of added values.
+ */
+function NumToTime(hourNum, minuteNum, secondNum){
+    let paddedSecond;
+    let paddedMinute;
+    let paddedHour;
+
+    if(secondNum > 9){
+        paddedSecond = secondNum;
+    }
+    else{
+        paddedSecond = '0'+secondNum;
+    }
+
+    if(minuteNum > 9){
+        paddedMinute = minuteNum;
+    }
+    else{
+        paddedMinute = '0'+minuteNum;
+    }
+
+    if(hourNum > 9){
+        paddedHour = hourNum;
+    }
+    else{
+        paddedHour = '0'+hourNum;
+    }
+
+    return paddedHour + ':' + paddedMinute + ':' + paddedSecond
+}
+
+/**
+ * Turns a day number to text day name.
+ * @param {Number} dayNumber
+ * @returns {String} Day name
+ */
 function NumToDay(dayNumber){
     switch(dayNumber){
         case 1:
@@ -36,6 +81,11 @@ function NumToDay(dayNumber){
     }
 }
 
+/**
+ * Turns month number to text month name.
+ * @param {Number} monthNumber
+ * @returns {String} Month name.
+ */
 function numToMonth(monthNumber){
     switch(monthNumber){
         case 0:
